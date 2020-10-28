@@ -119,19 +119,3 @@ def svm_loss_vectorized(W, X, y, reg):
   #############################################################################
 
   return loss, dW
-
-def main():
-  minst = tf.keras.datasets.mnist
-  (X_train, y_train), (X_test, y_test) = minst.load_data()
-  num_train = 10
-
-  # Train set
-  mask = range(num_train)
-  X_train = X_train[mask]
-  y_train = y_train[mask]
-  print(X_train.shape)    # (10, 28, 28)
-  print(y_train.shape)    # (10,)
-
-
-if __name__ == '__main__':
-    main()
