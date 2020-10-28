@@ -19,7 +19,7 @@ class MainWidget(QWidget):
 
     def __initData(self):
         self.__paintBoard = PaintBoard(self)
-        self.model = DigitClassifier()
+        self.__model = DigitClassifier()
 
     def __initView(self):
         self.setFixedSize(600, 400)
@@ -95,7 +95,7 @@ class MainWidget(QWidget):
         #     ax.text(0, 7, str(self.ytest[i]))
         # plt.show()
 
-        self.__result = self.model.predict(img_array)
+        self.__result = self.__model.predict(img_array)
         print("result: %d" % self.__result)
         self.__lb_Result.setText("%d" % self.__result)
 

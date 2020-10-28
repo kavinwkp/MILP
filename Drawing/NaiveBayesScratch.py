@@ -7,7 +7,6 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelBinarizer
 
 
-
 class NaiveBayesScratch():
     """朴素贝叶斯算法Scratch实现"""
     def __init__(self):

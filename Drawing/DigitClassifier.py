@@ -15,8 +15,9 @@ class DigitClassifier():
         (X_train, y_train), (X_test, y_test) = minst.load_data()
         num_train = 15000
         num_val = 1000
-        num_test = 10000
         num_dev = 500
+
+        # Validation set
         mask = range(num_train, num_train + num_val)
         X_val = X_train[mask]
         y_val = y_train[mask]
@@ -26,7 +27,7 @@ class DigitClassifier():
         X_train = X_train[mask]
         y_train = y_train[mask]
 
-        # Training set
+        # Small training set (development set)
         mask = np.random.choice(num_train, num_dev, replace=False)
         X_dev = X_train[mask]
         y_dev = y_train[mask]
@@ -58,6 +59,7 @@ def main():
     img_array = np.hstack([img_array, [1.0]]).reshape((1, 785))
     result = model.predict(img_array)
     print(result)
+
 
 if __name__ == '__main__':
     main()
