@@ -86,8 +86,13 @@ def svm_loss_vectorized(W, X, y, reg):
   #利用np.arange(),correct_class_score变成了 (num_train,y)的矩阵
   correct_class_score = scores[np.arange(num_train),y]
   correct_class_score = np.reshape(correct_class_score,(num_train,-1))
+
+  # sj - syi + delta
   margins = scores - correct_class_score + 1
+
+  # max(0, sj - syi + delta)
   margins = np.maximum(0, margins)
+
   #然后这里计算了j=y[i]的情形，所以把他们置为0
   margins[np.arange(num_train),y] = 0
   loss += np.sum(margins) / num_train

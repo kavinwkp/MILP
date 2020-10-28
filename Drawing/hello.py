@@ -5,10 +5,9 @@ X_train, y_train = load_iris(return_X_y=True)
 # num_train = 150
 num_dev = 5
 # mask = np.random.choice(num_train, num_dev, replace=False)
-mask = [50, 115, 75, 144, 76]
+mask = [40, 75, 25, 44, 76]
 X = X_train[mask]
 y = y_train[mask]
-y -= 1
 print(X.shape)      # (5, 4)
 print(y.shape)      # (5,)
 """
@@ -29,6 +28,21 @@ print(num_train)
 print(np.arange(num_train))
 correct_class_score = scores[np.arange(num_train),y]
 print(correct_class_score)
+print(correct_class_score.shape)
 correct_class_score = np.reshape(correct_class_score,(num_train,-1))
+print(correct_class_score)
+print(correct_class_score.shape)
 margins = scores - correct_class_score + 1
+print(margins)
 margins = np.maximum(0, margins)
+print(margins)
+margins[np.arange(num_train),y] = 0
+print(margins)
+margins[margins > 0] = 1
+print(margins)
+row_sum = np.sum(margins,axis=1)
+print(row_sum)
+margins[np.arange(num_train),y] = -row_sum.T
+print(margins)
+dW = np.dot(X.T,margins)
+print(dW)
