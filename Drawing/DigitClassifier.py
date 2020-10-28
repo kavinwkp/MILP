@@ -44,7 +44,7 @@ class DigitClassifier():
         X_dev = np.hstack([X_dev, np.ones((X_dev.shape[0], 1))])
         tic = time.time()
         loss_hist = self.svm.train(X_train, y_train, learning_rate=1e-7, reg=2.5e4,
-                              num_iters=1500, verbose=True)
+                              num_iters=1, verbose=True)
         toc = time.time()
         print('That took %fs' % (toc - tic))
 
