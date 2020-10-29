@@ -92,6 +92,7 @@ class MainWidget(QWidget):
         # cv2.imshow("img", img)
 
         img_array = np.array(pil_img.convert('L')).reshape(784)
+        # print(img_array.shape)      # (784,)
 
         # display image
         # print(img_array)

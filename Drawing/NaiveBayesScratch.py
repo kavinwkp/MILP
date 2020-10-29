@@ -5,6 +5,7 @@ from sklearn.datasets import load_digits
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelBinarizer
+import tensorflow as tf
 
 
 class NaiveBayesScratch():
@@ -84,24 +85,63 @@ class NaiveBayesScratch():
 
 
 def main():
-    X, y = load_iris(return_X_y=True)
-    # X, y = load_digits(return_X_y=True)
-    xtrain, xtest, ytrain, ytest = train_test_split(X, y, train_size=0.8, shuffle=True)
-
+    # X, y = load_iris(return_X_y=True)
+    # # X, y = load_digits(return_X_y=True)
+    # xtrain, xtest, ytrain, ytest = train_test_split(X, y, train_size=0.8, shuffle=True)
+    #
+    # model = NaiveBayesScratch()
+    # # print(xtrain.shape)
+    # model.fit(xtrain, ytrain)
+    #
+    # # model.predict(xtest[0])
+    # n_test = xtest.shape[0]
+    # n_right = 0
+    # for i in range(n_test):
+    #     y_pred = model.predict(xtest[i])
+    #     if y_pred == ytest[i]:
+    #         n_right += 1
+    #     else:
+    #         print("该样本真实标签为：{}，但是Scratch模型预测标签为：{}".format(ytest[i], y_pred))
+    # print("Scratch模型在测试集上的准确率为：{}%".format(n_right * 100 / n_test))
     model = NaiveBayesScratch()
-    # print(xtrain.shape)
-    model.fit(xtrain, ytrain)
-
-    # model.predict(xtest[0])
-    n_test = xtest.shape[0]
-    n_right = 0
+    # img = Image.open("./images/test6.png")
+    # img_array = np.array(img.convert('L')).reshape(784)
+    # img_array = np.hstack([img_array, [1.0]]).reshape((1, 785))
+    # result = model.predict(img_array)
+    minst = tf.keras.datasets.mnist
+    (X_train, y_train), (X_test, y_test) = minst.load_data()
+    X_train = np.reshape(X_train, (X_train.shape[0], -1))
+    num_train = 15000
+    mask = range(num_train)
+    X_train = X_train[mask]
+    y_train = y_train[mask]
+    model.fit(X_train, y_train)
+    X_test = np.reshape(X_test, (X_test.shape[0], -1))
+    num = list()
+    for i in range(10):
+        num.append(0)
+    count = list()
+    for i in range(10):
+        count.append(0)
+    n_test = X_test.shape[0]
+    # print(X_test[0].shape)      # (784,)
     for i in range(n_test):
-        y_pred = model.predict(xtest[i])
-        if y_pred == ytest[i]:
-            n_right += 1
-        else:
-            print("该样本真实标签为：{}，但是Scratch模型预测标签为：{}".format(ytest[i], y_pred))
-    print("Scratch模型在测试集上的准确率为：{}%".format(n_right * 100 / n_test))
+        # print(i)
+        y_pred = model.predict(X_test[i])
+        num[y_test[i]] += 1
+        if y_pred == y_test[i]:
+            count[y_test[i]] += 1
+
+    print(count)
+    print(num)
+
+    print("result: %f" % (np.sum(count) / np.sum(num)))
+
+    accurate = list()
+    for i in range(10):
+        accurate.append(count[i] / num[i])  # 0.798200
+    print(np.around(accurate, 3))
+    # [0.847 0.991 0.684 0.781 0.783 0.637 0.878 0.839 0.655 0.846]
 
 
 if __name__ == '__main__':

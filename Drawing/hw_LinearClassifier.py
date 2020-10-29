@@ -79,21 +79,18 @@ class MainWidget(QWidget):
         # pil_img.show()
 
         img_array = np.array(pil_img.convert('L')).reshape(784)
-        img_array = np.hstack([img_array, [1.0]]).reshape((1, 785))
-
         # display image
         # plt.imshow(img_array.reshape(28, 28), cmap="binary")
         # plt.imshow(pil_img, cmap="binary")
         # plt.show()
-        # fig = plt.figure(figsize=(6, 6))
-        # fig.subplots_adjust(left=0, right=1, bottom=0, top=1, hspace=0.05, wspace=0.05)
-        # # 绘制数字：每张图像8*8像素点
-        # for i in range(64):
-        #     ax = fig.add_subplot(8, 8, i + 1, xticks=[], yticks=[])
-        #     ax.imshow(self.xtest[i].reshape(28, 28), cmap=plt.cm.binary, interpolation='nearest')
-        #     # 用目标值标记图像
-        #     ax.text(0, 7, str(self.ytest[i]))
-        # plt.show()
+
+        img_array = np.hstack([img_array, [1.0]]).reshape((1, 785))
+        # img_array = np.hstack([img_array, [1.0]])
+        # print(img_array.shape)      # (785,)
+        # img_array = np.reshape(img_array, (img_array.shape[0], -1))
+        # print(img_array.shape)      # (785, 1)
+
+
 
         self.__result = self.__model.predict(img_array)
         print("result: %d" % self.__result)
