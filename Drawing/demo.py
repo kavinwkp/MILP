@@ -7,3 +7,4 @@ b = [[1, 2, 3], [4, 5, 6]]
 print(np.sum(b))
 
 print(np.sum(b, axis=1))
+print('hello')
