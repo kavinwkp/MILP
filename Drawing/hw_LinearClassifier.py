@@ -80,9 +80,9 @@ class MainWidget(QWidget):
 
         img_array = np.array(pil_img.convert('L')).reshape(784)
         # display image
-        # plt.imshow(img_array.reshape(28, 28), cmap="binary")
+        plt.imshow(img_array.reshape(28, 28), cmap="binary")
         # plt.imshow(pil_img, cmap="binary")
-        # plt.show()
+        plt.show()
 
         img_array = np.hstack([img_array, [1.0]]).reshape((1, 785))
         # img_array = np.hstack([img_array, [1.0]])

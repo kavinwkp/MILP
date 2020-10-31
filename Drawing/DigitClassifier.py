@@ -3,6 +3,7 @@ import tensorflow as tf
 from linear_classifier import LinearSVM
 import time
 from PIL import Image
+import matplotlib.pyplot as plt
 
 class DigitClassifier():
 
@@ -48,6 +49,10 @@ class DigitClassifier():
                               num_iters=1500, verbose=True)
         toc = time.time()
         print('That took %fs' % (toc - tic))
+        # plt.plot(loss_hist)
+        # plt.xlabel('Iteration number')
+        # plt.ylabel('Loss value')
+        # plt.show()
 
     def predict(self, x):
         return self.svm.predict(x)

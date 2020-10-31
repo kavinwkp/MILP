@@ -111,7 +111,7 @@ def main():
     minst = tf.keras.datasets.mnist
     (X_train, y_train), (X_test, y_test) = minst.load_data()
     X_train = np.reshape(X_train, (X_train.shape[0], -1))
-    num_train = 15000
+    num_train = 10000
     mask = range(num_train)
     X_train = X_train[mask]
     y_train = y_train[mask]
@@ -139,9 +139,10 @@ def main():
 
     accurate = list()
     for i in range(10):
-        accurate.append(count[i] / num[i])  # 0.798200
+        accurate.append(count[i] / num[i])  # 0.798200    0.825500
     print(np.around(accurate, 3))
     # [0.847 0.991 0.684 0.781 0.783 0.637 0.878 0.839 0.655 0.846]
+    # [0.882 0.988 0.761 0.811 0.8   0.669 0.887 0.83  0.732 0.859]
 
 
 if __name__ == '__main__':
