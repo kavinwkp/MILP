@@ -79,13 +79,13 @@ def main():
     print(count)
     print(num)
 
-    print("result: %f" % (np.sum(count) / np.sum(num)))
+    print("result: %f" % (np.sum(count) / np.sum(num)))     # 0.865100
 
     accurate = list()
     for i in range(10):
         accurate.append(count[i] / num[i])
     print(np.around(accurate, 3))
-
+    # [0.972 0.979 0.846 0.848 0.874 0.733 0.91  0.866 0.79  0.808]
 
 if __name__ == '__main__':
     main()
