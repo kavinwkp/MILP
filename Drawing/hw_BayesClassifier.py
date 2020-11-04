@@ -53,7 +53,6 @@ class MainWidget(QWidget):
         self.__btn_Predict.clicked.connect(self.predict)
         sub_layout.addWidget(self.__btn_Predict)
 
-
         self.__btn_Quit = QPushButton('quit')
         self.__btn_Quit.setParent(self)
         self.__btn_Quit.clicked.connect(self.quit)
