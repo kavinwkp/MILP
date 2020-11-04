@@ -87,9 +87,6 @@ class MainWidget(QWidget):
         pil_img = pil_img.resize((28, 28), Image.ANTIALIAS)
         # pil_img.save('./images/test66.png')
         # pil_img.show()
-        # img = cv2.cvtColor(np.asarray(pil_img), cv2.COLOR_BGR2GRAY)
-        # img = cv2.medianBlur(img, 3)
-        # cv2.imshow("img", img)
 
         img_array = np.array(pil_img.convert('L')).reshape(784)
         # print(img_array.shape)      # (784,)
@@ -97,7 +94,6 @@ class MainWidget(QWidget):
         # display image
         # print(img_array)
         # plt.imshow(img_array.reshape(28, 28), cmap="binary")
-        # plt.imshow(pil_img, cmap="binary")
         # plt.show()
         # fig = plt.figure(figsize=(6, 6))
         # fig.subplots_adjust(left=0, right=1, bottom=0, top=1, hspace=0.05, wspace=0.05)

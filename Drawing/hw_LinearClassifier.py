@@ -90,8 +90,6 @@ class MainWidget(QWidget):
         # img_array = np.reshape(img_array, (img_array.shape[0], -1))
         # print(img_array.shape)      # (785, 1)
 
-
-
         self.__result = self.__model.predict(img_array)
         print("result: %d" % self.__result)
         self.__lb_Result.setText("%d" % self.__result)
