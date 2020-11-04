@@ -92,8 +92,8 @@ class MainWidget(QWidget):
 
         # display image
         # print(img_array)
-        # plt.imshow(img_array.reshape(28, 28), cmap="binary")
-        # plt.show()
+        plt.imshow(img_array.reshape(28, 28), cmap="binary")
+        plt.show()
         # fig = plt.figure(figsize=(6, 6))
         # fig.subplots_adjust(left=0, right=1, bottom=0, top=1, hspace=0.05, wspace=0.05)
         # # 绘制数字：每张图像8*8像素点

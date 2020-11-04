@@ -18,7 +18,7 @@ class PaintBoard(QWidget):
         self.__lastPose = QPoint(0, 0)
         self.__currentPose = QPoint(0, 0)
         self.__painter = QPainter()
-        self.__thickness = 20
+        self.__thickness = 24
         self.__penColor = QColor('white')
 
     def __InitView(self):
